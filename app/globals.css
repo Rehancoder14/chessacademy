@@ -25,6 +25,104 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.brand-mark {
+  align-items: center;
+  animation: logo-pulse 4.5s ease-in-out infinite;
+  background:
+    linear-gradient(135deg, rgba(251, 191, 36, 0.28), rgba(255, 255, 255, 0.08)),
+    #050505;
+  border: 1px solid rgba(251, 191, 36, 0.5);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+    0 16px 34px rgba(0, 0, 0, 0.35);
+  display: inline-flex;
+  flex: 0 0 auto;
+  height: 3.75rem;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0.35rem;
+  position: relative;
+  width: 3.75rem;
+}
+
+.brand-mark::after {
+  animation: mark-shine 3.8s ease-in-out infinite;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.72) 45%,
+    transparent 70%
+  );
+  content: "";
+  height: 150%;
+  left: -95%;
+  position: absolute;
+  top: -25%;
+  transform: rotate(18deg);
+  width: 42%;
+}
+
+.brand-mark-large {
+  height: 5.5rem;
+  width: 5.5rem;
+}
+
+.brand-mark-stage {
+  animation:
+    logo-pulse 4.5s ease-in-out infinite,
+    crown-hover 5.2s ease-in-out infinite;
+  height: 7rem;
+  width: 7rem;
+}
+
+.hero-copy {
+  animation: hero-enter 900ms ease-out both;
+}
+
+.hero-scan {
+  animation: scan-lines 9s linear infinite;
+  background:
+    linear-gradient(90deg, transparent 0 47%, rgba(251, 191, 36, 0.28) 50%, transparent 53%),
+    linear-gradient(0deg, transparent 0 48%, rgba(255, 255, 255, 0.18) 50%, transparent 52%);
+  background-size: 180px 180px;
+}
+
+.stat-tile,
+.academy-square {
+  position: relative;
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease;
+}
+
+.stat-tile::before,
+.academy-square::before,
+.stage-card::before {
+  background: linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.38), transparent);
+  content: "";
+  height: 1px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transform: translateX(-100%);
+  transition: transform 500ms ease;
+  width: 100%;
+}
+
+.stat-tile:hover,
+.academy-square:hover {
+  border-color: rgba(251, 191, 36, 0.55);
+  box-shadow: 8px 8px 0 rgba(251, 191, 36, 0.18);
+  transform: translateY(-4px);
+}
+
+.stat-tile:hover::before,
+.academy-square:hover::before,
+.stage-card:hover::before {
+  transform: translateX(100%);
+}
+
 .chess-board-3d {
   animation: board-float 6s ease-in-out infinite;
   display: grid;
@@ -35,6 +133,15 @@ body {
   box-shadow:
     0 34px 60px rgba(0, 0, 0, 0.55),
     18px 18px 0 rgba(255, 255, 255, 0.12);
+}
+
+.chess-board-3d::after {
+  animation: board-sweep 4.8s ease-in-out infinite;
+  background: linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.32), transparent);
+  content: "";
+  inset: 0;
+  position: absolute;
+  transform: translateX(-115%);
 }
 
 .chess-board-3d span {
@@ -66,7 +173,7 @@ body {
 .floating-piece {
   align-items: center;
   animation: piece-float 4.8s ease-in-out infinite;
-  border-radius: 999px;
+  border: 1px solid rgba(251, 191, 36, 0.38);
   box-shadow: 0 18px 44px rgba(0, 0, 0, 0.5);
   display: flex;
   font-size: 2.1rem;
@@ -77,16 +184,90 @@ body {
   width: 5.4rem;
 }
 
-.floating-piece:nth-of-type(3) {
+.float-delay-1 {
   animation-delay: -1.2s;
 }
 
-.floating-piece:nth-of-type(4) {
+.float-delay-2 {
   animation-delay: -2.2s;
 }
 
-.floating-piece:nth-of-type(5) {
+.float-delay-3 {
   animation-delay: -3.4s;
+}
+
+@keyframes logo-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+      0 16px 34px rgba(0, 0, 0, 0.35),
+      0 0 0 rgba(251, 191, 36, 0);
+  }
+
+  50% {
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.12) inset,
+      0 20px 44px rgba(0, 0, 0, 0.45),
+      0 0 34px rgba(251, 191, 36, 0.34);
+  }
+}
+
+@keyframes mark-shine {
+  0%,
+  35% {
+    left: -95%;
+  }
+
+  65%,
+  100% {
+    left: 125%;
+  }
+}
+
+@keyframes hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes crown-hover {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+
+  50% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+}
+
+@keyframes scan-lines {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 180px 180px;
+  }
+}
+
+@keyframes board-sweep {
+  0%,
+  35% {
+    transform: translateX(-115%);
+  }
+
+  70%,
+  100% {
+    transform: translateX(115%);
+  }
 }
 
 @keyframes board-float {
@@ -110,5 +291,16 @@ body {
 
   50% {
     transform: translateY(-16px) rotate(5deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
   }
 }

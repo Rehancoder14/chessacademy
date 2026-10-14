@@ -1,19 +1,22 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://chess-academy.example.com"),
   title: {
-    default: "Chess Academy Satara | Chess Coaching, Club & Practice",
-    template: "%s | Chess Academy Satara",
+    default: "Kingslayer Chess Academy | Chess Coaching, Club & Practice",
+    template: "%s | Kingslayer Chess Academy",
   },
   description:
-    "Chess Academy in Satara for kids, beginners and competitive players. Learn chess with coaches Aniket Bapat and Apurv Deshmukh near Sayali Hotel, Powai Naka.",
+    "Kingslayer Chess Academy in Satara for kids, beginners and competitive players. Learn chess with coaches Aniket Bapat and Apurv Deshmukh near Sayali Hotel, Powai Naka.",
   keywords: [
     "chess",
     "satara chess",
     "satara chess club",
+    "kingslayer chess academy",
+    "kingslayer chess academy satara",
     "chess academy",
     "chess academy satara",
     "chess coaching",
@@ -29,21 +32,21 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Chess Academy Satara - Premium Chess Coaching",
+    title: "Kingslayer Chess Academy - Premium Chess Coaching",
     description:
       "Chess coaching, club membership and game practice in Satara with coaches Aniket Bapat and Apurv Deshmukh.",
     url: "https://chess-academy.example.com",
-    siteName: "Chess Academy",
+    siteName: "Kingslayer Chess Academy",
     locale: "en_IN",
     type: "website",
-    images: [{ url: "/chess-3d-hero.jpg", width: 1200, height: 630 }],
+    images: [{ url: "/logo.png", width: 1254, height: 1254 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Chess Academy Satara",
+    title: "Kingslayer Chess Academy",
     description:
       "Premium chess coaching, membership and game practice near Powai Naka, Satara.",
-    images: ["/chess-3d-hero.jpg"],
+    images: ["/logo.png"],
   },
 };
 
@@ -52,10 +55,27 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="en" className="h-full">
       <body className="min-h-full bg-white text-black antialiased">
         <div className="flex min-h-screen flex-col">
-          <header className="bg-black text-white shadow-md">
+          <header className="sticky top-0 z-50 border-b border-white/10 bg-black/90 text-white shadow-md backdrop-blur-xl">
             <nav className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 py-4">
-              <Link href="/" className="text-2xl font-bold">
-                Chess Academy
+              <Link href="/" className="group flex items-center gap-3">
+                <span className="brand-mark">
+                  <Image
+                    src="/logo.png"
+                    alt="Kingslayer Chess Academy logo"
+                    width={48}
+                    height={48}
+                    className="h-12 w-12 object-contain"
+                    priority
+                  />
+                </span>
+                <span className="leading-none">
+                  <span className="block text-xl font-black uppercase">
+                    Kingslayer
+                  </span>
+                  <span className="block text-xs font-bold uppercase text-zinc-400">
+                    Chess Academy
+                  </span>
+                </span>
               </Link>
               <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium">
                 <li>
@@ -84,7 +104,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <main className="w-full flex-1">{children}</main>
           <footer className="bg-black px-4 py-4 text-center text-sm text-white">
             <p>
-              &copy; 2026 Chess Academy - All rights reserved.
+              &copy; 2026 Kingslayer Chess Academy - All rights reserved.
             </p>
           </footer>
         </div>

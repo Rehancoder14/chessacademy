@@ -31,19 +31,19 @@ const strengths = [
 const metrics = [
   { value: "2", label: "Dedicated coaches" },
   { value: "3+", label: "Core programs" },
-  { value: "100%", label: "Chess-focused space" },
+  { value: "64", label: "Squares of sharp focus" },
 ];
 
 const faqs = [
   {
-    question: "Who can join Chess Academy Satara?",
+    question: "Who can join Kingslayer Chess Academy?",
     answer:
       "Kids, beginners, school students and players who want guided chess coaching, regular practice and club-style learning.",
   },
   {
     question: "Where is the academy located?",
     answer:
-      "Chess Academy is opposite Sayali Hotel, Powai Naka, Satara, making it easy to reach from central Satara.",
+      "Kingslayer Chess Academy is opposite Sayali Hotel, Powai Naka, Satara, making it easy to reach from central Satara.",
   },
   {
     question: "What does the academy provide?",
@@ -56,7 +56,7 @@ export default function Home() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "SportsActivityLocation",
-    name: "Chess Academy Satara",
+    name: "Kingslayer Chess Academy",
     description:
       "Chess coaching, chess club membership and game practice in Satara with coaches Aniket Bapat and Apurv Deshmukh.",
     sport: "Chess",
@@ -97,21 +97,42 @@ export default function Home() {
             className="object-cover opacity-65"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_74%_30%,rgba(255,255,255,.2),transparent_28%),linear-gradient(90deg,#000_0%,rgba(0,0,0,.9)_38%,rgba(0,0,0,.35)_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,#000_0%,rgba(0,0,0,.92)_38%,rgba(0,0,0,.42)_100%)]" />
           <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-black to-transparent" />
         </div>
 
         <div className="absolute left-0 right-0 top-24 -z-10 h-px bg-white/20" />
         <div className="absolute bottom-20 left-0 right-0 -z-10 h-px bg-white/10" />
+        <div className="hero-scan absolute inset-0 -z-10 opacity-45" />
 
         <div className="mx-auto grid min-h-[86vh] max-w-6xl items-center gap-12 px-4 py-20 lg:grid-cols-[1.05fr_.95fr]">
-          <div className="max-w-3xl">
-            <p className="mb-5 inline-flex border border-white/30 px-4 py-2 text-sm font-semibold uppercase tracking-[0.18em] text-white/85">
+          <div className="hero-copy max-w-3xl">
+            <div className="mb-6 inline-flex items-center gap-4 border border-white/20 bg-black/45 px-4 py-3 shadow-[8px_8px_0_rgba(255,255,255,.10)] backdrop-blur">
+              <span className="brand-mark brand-mark-large">
+                <Image
+                  src="/logo.png"
+                  alt="Kingslayer Chess Academy logo"
+                  width={72}
+                  height={72}
+                  className="h-16 w-16 object-contain"
+                  priority
+                />
+              </span>
+              <span>
+                <span className="block text-sm font-black uppercase text-amber-300">
+                  Kingslayer
+                </span>
+                <span className="block text-xl font-black uppercase text-white">
+                  Chess Academy
+                </span>
+              </span>
+            </div>
+            <p className="mb-5 inline-flex border border-white/30 px-4 py-2 text-sm font-semibold uppercase text-white/85">
               Satara chess club and coaching academy
             </p>
             <h1 className="text-5xl font-black leading-[0.95] text-white sm:text-7xl lg:text-8xl">
-              Master the board.
-              <span className="block text-zinc-400">Master the mind.</span>
+              Train like royalty.
+              <span className="block text-amber-300">Rule the board.</span>
             </h1>
             <p className="mt-6 max-w-2xl text-xl leading-9 text-zinc-100">
               Premium chess coaching for children, beginners and ambitious
@@ -134,7 +155,10 @@ export default function Home() {
             </div>
             <div className="mt-10 grid gap-3 sm:grid-cols-3">
               {metrics.map((metric) => (
-                <div key={metric.label} className="border border-white/15 bg-white/10 p-4 backdrop-blur">
+                <div
+                  key={metric.label}
+                  className="stat-tile border border-white/15 bg-white/10 p-4 backdrop-blur"
+                >
                   <p className="text-3xl font-black">{metric.value}</p>
                   <p className="mt-1 text-sm font-semibold text-zinc-300">
                     {metric.label}
@@ -149,19 +173,19 @@ export default function Home() {
       </section>
 
       <section id="about" className="relative overflow-hidden bg-white px-4 py-24 text-black">
-        <div className="absolute left-1/2 top-8 h-[520px] w-[520px] -translate-x-1/2 rounded-full border border-black/10" />
+        <div className="absolute inset-x-0 top-0 h-px bg-black/10" />
         <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[.9fr_1.1fr]">
           <div className="relative min-h-[460px] overflow-hidden bg-black p-6 text-white shadow-[18px_18px_0_#e4e4e7]">
             <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,.12)_0_25%,transparent_25%_50%,rgba(255,255,255,.12)_50%_75%,transparent_75%)] bg-[length:92px_92px] opacity-35" />
             <div className="relative flex h-full min-h-[410px] flex-col justify-between border border-white/20 p-6">
-              <p className="text-sm font-bold uppercase tracking-[0.18em] text-zinc-300">
+              <p className="text-sm font-bold uppercase text-zinc-300">
                 Training board
               </p>
               <div className="grid grid-cols-4 gap-3">
                 {["King", "Queen", "Rook", "Knight"].map((piece) => (
                   <div
                     key={piece}
-                    className="aspect-square bg-white text-black shadow-[6px_6px_0_#71717a]"
+                    className="academy-square aspect-square bg-white text-black shadow-[6px_6px_0_#71717a]"
                   >
                     <div className="flex h-full flex-col items-center justify-center">
                       <span className="text-4xl font-black">
@@ -180,14 +204,14 @@ export default function Home() {
             </div>
           </div>
           <div className="flex flex-col justify-center">
-            <p className="text-sm font-bold uppercase tracking-[0.18em] text-zinc-500">
+            <p className="text-sm font-bold uppercase text-zinc-500">
               Why parents choose us
             </p>
             <h2 className="mt-4 text-4xl font-black leading-tight sm:text-5xl">
               Coaching that turns curiosity into confidence.
             </h2>
             <p className="mt-6 text-lg leading-8 text-zinc-700">
-              Chess Academy Satara is built for students who need patient
+              Kingslayer Chess Academy is built for students who need patient
               instruction, regular board practice and a serious learning
               environment. Classes focus on fundamentals, tactics, planning,
               endgames and practical decision-making.
@@ -210,7 +234,7 @@ export default function Home() {
         <div className="absolute inset-y-0 right-0 w-1/2 bg-[linear-gradient(45deg,rgba(255,255,255,.07)_25%,transparent_25%,transparent_50%,rgba(255,255,255,.07)_50%,rgba(255,255,255,.07)_75%,transparent_75%)] bg-[length:72px_72px] opacity-30" />
         <div className="mx-auto max-w-6xl">
           <div className="max-w-3xl">
-            <p className="text-sm font-bold uppercase tracking-[0.18em] text-zinc-400">
+            <p className="text-sm font-bold uppercase text-zinc-400">
               Coaches
             </p>
             <h2 className="mt-4 text-4xl font-black sm:text-5xl">
@@ -251,7 +275,7 @@ export default function Home() {
         <div className="mx-auto max-w-6xl">
           <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
             <div>
-              <p className="text-sm font-bold uppercase tracking-[0.18em] text-zinc-500">
+              <p className="text-sm font-bold uppercase text-zinc-500">
                 Academy programs
               </p>
               <h2 className="mt-4 text-4xl font-black sm:text-5xl">
@@ -286,7 +310,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(255,255,255,.18),transparent_24%)]" />
         <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[.85fr_1.15fr]">
           <div>
-            <p className="text-sm font-bold uppercase tracking-[0.18em] text-zinc-400">
+            <p className="text-sm font-bold uppercase text-zinc-400">
               Admission enquiry
             </p>
             <h2 className="mt-4 text-4xl font-black sm:text-5xl">
@@ -308,7 +332,7 @@ export default function Home() {
             </div>
           </div>
 
-          <form className="grid gap-4 bg-white p-6 text-black">
+          <form className="grid gap-4 bg-white p-6 text-black shadow-[14px_14px_0_rgba(251,191,36,.25)]">
             <div className="grid gap-4 md:grid-cols-2">
               <label className="grid gap-2 text-sm font-bold">
                 Parent name
@@ -370,10 +394,7 @@ export default function Home() {
             >
               Send enquiry
             </button>
-            <p className="text-sm leading-6 text-zinc-500">
-              This form is ready for frontend collection. Connect it to your
-              preferred email, WhatsApp or backend service before launch.
-            </p>
+            
           </form>
         </div>
       </section>
@@ -399,10 +420,22 @@ export default function Home() {
 
 function ChessBoardStage() {
   return (
-    <div className="relative min-h-[460px] overflow-hidden border border-white/15 bg-white/10 p-5 backdrop-blur">
-      <div className="absolute -right-16 -top-16 h-52 w-52 rounded-full border border-white/20" />
-      <div className="absolute -bottom-20 left-8 h-64 w-64 rounded-full border border-white/10" />
+    <div className="stage-card relative min-h-[460px] overflow-hidden border border-white/15 bg-white/10 p-5 backdrop-blur">
+      <div className="absolute inset-x-6 top-8 h-px bg-amber-300/40" />
+      <div className="absolute inset-x-12 bottom-12 h-px bg-white/15" />
       <div className="relative h-[430px]">
+        <div className="absolute left-1/2 top-8 z-10 -translate-x-1/2">
+          <span className="brand-mark brand-mark-stage">
+            <Image
+              src="/logo.png"
+              alt="Kingslayer Chess Academy emblem"
+              width={112}
+              height={112}
+              className="h-24 w-24 object-contain"
+              priority
+            />
+          </span>
+        </div>
         <div className="chess-board-3d absolute bottom-8 left-1/2 h-64 w-64 -translate-x-1/2">
           {Array.from({ length: 64 }).map((_, index) => (
             <span key={index} />
@@ -412,19 +445,19 @@ function ChessBoardStage() {
         <div className="floating-piece left-[8%] top-[18%] bg-white text-black">
           K
         </div>
-        <div className="floating-piece right-[10%] top-[10%] bg-black text-white ring-1 ring-white/30">
+        <div className="floating-piece float-delay-1 right-[10%] top-[10%] bg-black text-white ring-1 ring-white/30">
           Q
         </div>
-        <div className="floating-piece bottom-[22%] left-[16%] bg-black text-white ring-1 ring-white/30">
+        <div className="floating-piece float-delay-2 bottom-[22%] left-[16%] bg-black text-white ring-1 ring-white/30">
           R
         </div>
-        <div className="floating-piece bottom-[30%] right-[18%] bg-white text-black">
+        <div className="floating-piece float-delay-3 bottom-[30%] right-[18%] bg-white text-black">
           N
         </div>
 
-        <div className="absolute bottom-0 left-1/2 w-[86%] -translate-x-1/2 border border-white/20 bg-black/70 p-5 shadow-[12px_12px_0_rgba(255,255,255,.12)]">
-          <p className="text-sm font-bold uppercase tracking-[0.18em] text-zinc-400">
-            Built for young minds
+        <div className="absolute bottom-0 left-1/2 w-[86%] -translate-x-1/2 border border-white/20 bg-black/70 p-5 shadow-[12px_12px_0_rgba(251,191,36,.18)]">
+          <p className="text-sm font-bold uppercase text-zinc-400">
+            Kingslayer method
           </p>
           <p className="mt-3 text-2xl font-black leading-tight">
             Strategy, calculation and discipline in every session.
