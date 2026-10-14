@@ -8,8 +8,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: Arial, Helvetica, sans-serif;
+  --font-mono: "Courier New", Courier, monospace;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,4 +23,92 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.chess-board-3d {
+  animation: board-float 6s ease-in-out infinite;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  overflow: hidden;
+  transform: perspective(760px) rotateX(62deg) rotateZ(-35deg);
+  transform-style: preserve-3d;
+  box-shadow:
+    0 34px 60px rgba(0, 0, 0, 0.55),
+    18px 18px 0 rgba(255, 255, 255, 0.12);
+}
+
+.chess-board-3d span {
+  aspect-ratio: 1;
+}
+
+.chess-board-3d span:nth-child(16n + 1),
+.chess-board-3d span:nth-child(16n + 3),
+.chess-board-3d span:nth-child(16n + 5),
+.chess-board-3d span:nth-child(16n + 7),
+.chess-board-3d span:nth-child(16n + 10),
+.chess-board-3d span:nth-child(16n + 12),
+.chess-board-3d span:nth-child(16n + 14),
+.chess-board-3d span:nth-child(16n) {
+  background: #f4f4f5;
+}
+
+.chess-board-3d span:nth-child(16n + 2),
+.chess-board-3d span:nth-child(16n + 4),
+.chess-board-3d span:nth-child(16n + 6),
+.chess-board-3d span:nth-child(16n + 8),
+.chess-board-3d span:nth-child(16n + 9),
+.chess-board-3d span:nth-child(16n + 11),
+.chess-board-3d span:nth-child(16n + 13),
+.chess-board-3d span:nth-child(16n + 15) {
+  background: #09090b;
+}
+
+.floating-piece {
+  align-items: center;
+  animation: piece-float 4.8s ease-in-out infinite;
+  border-radius: 999px;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.5);
+  display: flex;
+  font-size: 2.1rem;
+  font-weight: 900;
+  height: 5.4rem;
+  justify-content: center;
+  position: absolute;
+  width: 5.4rem;
+}
+
+.floating-piece:nth-of-type(3) {
+  animation-delay: -1.2s;
+}
+
+.floating-piece:nth-of-type(4) {
+  animation-delay: -2.2s;
+}
+
+.floating-piece:nth-of-type(5) {
+  animation-delay: -3.4s;
+}
+
+@keyframes board-float {
+  0%,
+  100% {
+    transform: perspective(760px) rotateX(62deg) rotateZ(-35deg)
+      translateY(0);
+  }
+
+  50% {
+    transform: perspective(760px) rotateX(62deg) rotateZ(-35deg)
+      translateY(-14px);
+  }
+}
+
+@keyframes piece-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-4deg);
+  }
+
+  50% {
+    transform: translateY(-16px) rotate(5deg);
+  }
 }
