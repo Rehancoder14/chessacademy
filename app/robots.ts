@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://chess-academy.example.com/sitemap.xml",
+    sitemap: "https://www.kingslayerchessclub.in/sitemap.xml",
   };
 }

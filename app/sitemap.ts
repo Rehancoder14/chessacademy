@@ -1,10 +1,12 @@
 import type { MetadataRoute } from "next";
 
+const siteUrl = "https://www.kingslayerchessclub.in";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: "https://chess-academy.example.com",
-      lastModified: "2026-10-14",
+      url: siteUrl,
+      lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,
     },

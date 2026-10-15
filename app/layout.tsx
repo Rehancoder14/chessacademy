@@ -4,7 +4,7 @@ import Link from "next/link";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://chess-academy.example.com"),
+  metadataBase: new URL("https://www.kingslayerchessclub.in"),
   title: {
     default: "Kingslayer Chess Academy | Chess Coaching, Club & Practice",
     template: "%s | Kingslayer Chess Academy",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     title: "Kingslayer Chess Academy - Premium Chess Coaching",
     description:
       "Chess coaching, club membership and game practice in Satara with coaches Aniket Bapat and Apurv Deshmukh.",
-    url: "https://chess-academy.example.com",
+    url: "https://www.kingslayerchessclub.in",
     siteName: "Kingslayer Chess Academy",
     locale: "en_IN",
     type: "website",

@@ -43,12 +43,12 @@ const faqs = [
   {
     question: "Where is the academy located?",
     answer:
-      "Kingslayer Chess Academy is opposite Sayali Hotel, Powai Naka, Satara, making it easy to reach from central Satara.",
+      "Kingslayer Chess Academy is at 3rd Floor, Balaji Prestige, opposite Sayali Hotel, Powai Naka, Satara, Maharashtra.",
   },
   {
     question: "What does the academy provide?",
     answer:
-      "The academy provides chess coaching, club membership, game practice, position solving and guidance from Aniket Bapat and Apurv Deshmukh.",
+      "The academy provides chess coaching, club membership, game practice, position solving and guidance from Aniket Bapat and Apurva Deshmukh.",
   },
 ];
 
@@ -56,36 +56,62 @@ export default function Home() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "SportsActivityLocation",
+    "@id": "https://www.kingslayerchessclub.in/#academy",
     name: "Kingslayer Chess Academy",
+    url: "https://www.kingslayerchessclub.in/",
     description:
-      "Chess coaching, chess club membership and game practice in Satara with coaches Aniket Bapat and Apurv Deshmukh.",
+      "Kingslayer Chess Academy offers chess coaching, chess club membership and game practice for children, beginners and improving players in Satara, Maharashtra.",
     sport: "Chess",
-    image: "https://chess-academy.example.com/chess-3d-hero.jpg",
-    telephone: "8390237763",
+    image: "https://www.kingslayerchessclub.in/chess-3d-hero.jpg",
+    logo: "https://www.kingslayerchessclub.in/logo.png",
+    telephone: "+91-8390237763",
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        telephone: "+91-8390237763",
+        contactType: "admissions",
+        areaServed: "IN",
+      },
+      {
+        "@type": "ContactPoint",
+        telephone: "+91-7770090266",
+        contactType: "admissions",
+        areaServed: "IN",
+      },
+    ],
     address: {
       "@type": "PostalAddress",
-      streetAddress: "3rd Floor, Balaji prestige, Opposite Sayali Hotel, Powai Naka, Satara",
+      streetAddress: "3rd Floor, Balaji Prestige, Opposite Sayali Hotel, Powai Naka",
       addressLocality: "Satara",
       addressRegion: "Maharashtra",
       addressCountry: "IN",
     },
-    areaServed: ["Satara", "Powai Naka", "Maharashtra"],
+    areaServed: [
+      { "@type": "City", name: "Satara" },
+      { "@type": "Place", name: "Powai Naka, Satara" },
+    ],
     employee: [
       { "@type": "Person", name: "Aniket Bapat", jobTitle: "Chess Coach" },
-      { "@type": "Person", name: "Apurv Deshmukh", jobTitle: "Chess Coach" },
+      { "@type": "Person", name: "Apurva Deshmukh", jobTitle: "Chess Coach" },
     ],
-    offers: [
-      { "@type": "Offer", name: "Chess Coaching" },
-      { "@type": "Offer", name: "Chess Club Membership" },
-      { "@type": "Offer", name: "Chess Game Practice" },
-    ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Chess Academy Programs",
+      itemListElement: [
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Chess Coaching" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Chess Club Membership" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Chess Game Practice" } },
+      ],
+    },
   };
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
       />
       <section className="relative isolate overflow-hidden bg-black text-white">
         <div className="absolute inset-0 -z-10">
@@ -130,13 +156,16 @@ export default function Home() {
               Satara chess club and coaching academy
             </p>
             <h1 className="text-5xl font-black leading-[0.95] text-white sm:text-7xl lg:text-8xl">
-              Train like royalty.
-              <span className="block text-amber-300">Rule the board.</span>
+              Chess Academy
+              <span className="block text-amber-300">in Satara</span>
             </h1>
+            <p className="mt-4 text-lg font-bold uppercase tracking-wide text-amber-200">
+              Train like royalty. Rule the board.
+            </p>
             <p className="mt-6 max-w-2xl text-xl leading-9 text-zinc-100">
               Premium chess coaching for children, beginners and ambitious
-              players with Aniket Bapat and Apurv Deshmukh, opposite Sayali
-              Hotel at Powai Naka, Satara.
+              players with coaches Aniket Bapat and Apurva Deshmukh at Powai Naka,
+              opposite Sayali Hotel in Satara, Maharashtra.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
@@ -207,7 +236,7 @@ export default function Home() {
           </div>
           <div className="flex flex-col justify-center">
             <p className="text-sm font-bold uppercase text-zinc-500">
-              Why parents choose us
+              Chess coaching in Satara
             </p>
             <h2 className="mt-4 text-4xl font-black leading-tight sm:text-5xl">
               Coaching that turns curiosity into confidence.
@@ -240,11 +269,11 @@ export default function Home() {
               Coaches
             </p>
             <h2 className="mt-4 text-4xl font-black sm:text-5xl">
-              Learn with Aniket Bapat and Apurv Deshmukh.
+              Learn with Aniket Bapat and Apurva Deshmukh.
             </h2>
           </div>
           <div className="mt-10 grid gap-6 md:grid-cols-2">
-            {["Aniket Bapat", "Apurv Deshmukh"].map((coach) => (
+            {["Aniket Bapat", "Apurva Deshmukh"].map((coach) => (
               <article
                 key={coach}
                 className="relative border border-amber-900/10 bg-[#faf8f2] p-5 text-black shadow-[12px_12px_0_rgba(251,191,36,.12)]"
@@ -331,7 +360,7 @@ export default function Home() {
             <div className="mt-8 border border-white/15 p-5">
               <p className="font-bold">Address</p>
               <p className="mt-2 text-zinc-300">
-                Opposite Sayali Hotel, Powai Naka, Satara
+                3rd Floor, Balaji Prestige, opposite Sayali Hotel, Powai Naka, Satara, Maharashtra 415001.
               </p>
               <p className="mt-5 font-bold">Contact</p>
               <a href="tel:8390237763" className="mt-2 block text-zinc-300">
