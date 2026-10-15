@@ -61,10 +61,10 @@ export default function Home() {
       "Chess coaching, chess club membership and game practice in Satara with coaches Aniket Bapat and Apurv Deshmukh.",
     sport: "Chess",
     image: "https://chess-academy.example.com/chess-3d-hero.jpg",
-    telephone: "999999999",
+    telephone: "8390237763",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Opposite Sayali Hotel, Powai Naka",
+      streetAddress: "3rd Floor, Balaji prestige, Opposite Sayali Hotel, Powai Naka, Satara",
       addressLocality: "Satara",
       addressRegion: "Maharashtra",
       addressCountry: "IN",
@@ -114,8 +114,7 @@ export default function Home() {
                   alt="Kingslayer Chess Academy logo"
                   width={72}
                   height={72}
-                  className="h-16 w-16 object-contain"
-                  priority
+                  className="h-auto w-16 object-contain"
                 />
               </span>
               <span>
@@ -147,10 +146,10 @@ export default function Home() {
                 Enquire for admission
               </a>
               <a
-                href="tel:999999999"
+                href="tel:8390237763"
                 className="inline-flex h-14 items-center justify-center border border-white/40 px-7 text-base font-bold text-white transition hover:bg-white hover:text-black"
               >
-                Call 999999999
+                Call 8390237763, 7770090266
               </a>
             </div>
             <div className="mt-10 grid gap-3 sm:grid-cols-3">
@@ -172,7 +171,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="about" className="relative overflow-hidden bg-white px-4 py-24 text-black">
+      <section
+        id="about"
+        className="light-section relative overflow-hidden px-4 py-24 text-black"
+      >
         <div className="absolute inset-x-0 top-0 h-px bg-black/10" />
         <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[.9fr_1.1fr]">
           <div className="relative min-h-[460px] overflow-hidden bg-black p-6 text-white shadow-[18px_18px_0_#e4e4e7]">
@@ -245,12 +247,15 @@ export default function Home() {
             {["Aniket Bapat", "Apurv Deshmukh"].map((coach) => (
               <article
                 key={coach}
-                className="relative border border-white/15 bg-white p-5 text-black shadow-[12px_12px_0_rgba(255,255,255,.16)]"
+                className="relative border border-amber-900/10 bg-[#faf8f2] p-5 text-black shadow-[12px_12px_0_rgba(251,191,36,.12)]"
               >
                 <div className="grid gap-5 sm:grid-cols-[180px_1fr]">
-                  <div className="flex aspect-square items-center justify-center border border-dashed border-black/35 bg-[conic-gradient(from_45deg,#111_0_25%,#fff_0_50%,#111_0_75%,#fff_0)] p-4 text-center">
-                    <span className="bg-white px-3 py-2 text-sm font-bold text-black">
-                      Coach image placeholder
+                  <div className="flex aspect-square items-center justify-center border border-dashed border-black/35 bg-[conic-gradient(from_45deg,#18181b_0_25%,#e9e4d8_0_50%,#18181b_0_75%,#e9e4d8_0)] p-4 text-center">
+                    <span className="border border-amber-400/60 bg-black/90 px-5 py-4 text-3xl font-black tracking-[0.2em] text-amber-300 shadow-xl">
+                      {coach
+                        .split(" ")
+                        .map((name) => name[0])
+                        .join("")}
                     </span>
                   </div>
                   <div>
@@ -271,7 +276,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="programs" className="bg-white px-4 py-24 text-black">
+      <section
+        id="programs"
+        className="light-section px-4 py-24 text-black"
+      >
         <div className="mx-auto max-w-6xl">
           <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
             <div>
@@ -291,7 +299,7 @@ export default function Home() {
             {programs.map((program, index) => (
               <article
                 key={program.title}
-                className="group border border-black/10 bg-zinc-50 p-6 transition hover:-translate-y-2 hover:bg-black hover:text-white hover:shadow-[12px_12px_0_#d4d4d8]"
+                className="group border border-black/10 bg-white/65 p-6 transition hover:-translate-y-2 hover:bg-black hover:text-white hover:shadow-[12px_12px_0_rgba(251,191,36,.22)]"
               >
                 <p className="text-5xl font-black text-zinc-200 group-hover:text-zinc-700">
                   0{index + 1}
@@ -326,13 +334,13 @@ export default function Home() {
                 Opposite Sayali Hotel, Powai Naka, Satara
               </p>
               <p className="mt-5 font-bold">Contact</p>
-              <a href="tel:999999999" className="mt-2 block text-zinc-300">
-                999999999
+              <a href="tel:8390237763" className="mt-2 block text-zinc-300">
+                8390237763, 7770090266
               </a>
             </div>
           </div>
 
-          <form className="grid gap-4 bg-white p-6 text-black shadow-[14px_14px_0_rgba(251,191,36,.25)]">
+          <form className="grid gap-4 bg-[#faf8f2] p-6 text-black shadow-[14px_14px_0_rgba(251,191,36,.25)]">
             <div className="grid gap-4 md:grid-cols-2">
               <label className="grid gap-2 text-sm font-bold">
                 Parent name
@@ -399,14 +407,17 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="faq" className="bg-white px-4 py-20 text-black">
+      <section id="faq" className="light-section px-4 py-20 text-black">
         <div className="mx-auto max-w-6xl">
           <h2 className="text-4xl font-black sm:text-5xl">
             Chess classes in Satara for serious growth.
           </h2>
           <div className="mt-10 grid gap-5 md:grid-cols-3">
             {faqs.map((faq) => (
-              <article key={faq.question} className="border border-black/10 p-6">
+              <article
+                key={faq.question}
+                className="border border-black/10 border-t-2 border-t-amber-400 bg-white/65 p-6 shadow-[6px_6px_0_rgba(24,24,27,.06)]"
+              >
                 <h3 className="text-xl font-black">{faq.question}</h3>
                 <p className="mt-4 leading-7 text-zinc-700">{faq.answer}</p>
               </article>
@@ -431,8 +442,7 @@ function ChessBoardStage() {
               alt="Kingslayer Chess Academy emblem"
               width={112}
               height={112}
-              className="h-24 w-24 object-contain"
-              priority
+              className="h-auto w-24 object-contain"
             />
           </span>
         </div>

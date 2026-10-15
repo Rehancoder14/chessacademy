@@ -53,7 +53,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className="h-full">
-      <body className="min-h-full bg-white text-black antialiased">
+      <body className="min-h-full bg-[#f6f3eb] text-black antialiased">
         <div className="flex min-h-screen flex-col">
           <header className="sticky top-0 z-50 border-b border-white/10 bg-black/90 text-white shadow-md backdrop-blur-xl">
             <nav className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 py-4">
@@ -64,8 +64,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                     alt="Kingslayer Chess Academy logo"
                     width={48}
                     height={48}
-                    className="h-12 w-12 object-contain"
-                    priority
+                    className="h-auto w-10 object-contain"
                   />
                 </span>
                 <span className="leading-none">
