@@ -20,6 +20,16 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Admission enquiry email
+
+Copy `.env.example` to `.env.local` and set `EMAIL_FROM` to the Gmail address
+used to send enquiry notifications. Set `EMAIL_PASSWORD` to that account's
+Google app password (not its regular account password). The enquiry form sends
+submissions to `aniketbapat108@gmail.com`; `.env.local` is ignored by Git.
+
+Set the same variables in your hosting provider's server-side environment
+settings before deploying. Never prefix these values with `NEXT_PUBLIC_`.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

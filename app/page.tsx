@@ -1,4 +1,16 @@
 import Image from "next/image";
+import EnquiryForm from "./EnquiryForm";
+
+const phoneNumbers = [
+  {
+    display: "83902 37763",
+    international: "+91-8390237763",
+  },
+  {
+    display: "77700 90266",
+    international: "+91-7770090266",
+  },
+];
 
 const programs = [
   {
@@ -64,21 +76,13 @@ export default function Home() {
     sport: "Chess",
     image: "https://www.kingslayerchessclub.in/chess-3d-hero.jpg",
     logo: "https://www.kingslayerchessclub.in/logo.png",
-    telephone: "+91-8390237763",
-    contactPoint: [
-      {
-        "@type": "ContactPoint",
-        telephone: "+91-8390237763",
-        contactType: "admissions",
-        areaServed: "IN",
-      },
-      {
-        "@type": "ContactPoint",
-        telephone: "+91-7770090266",
-        contactType: "admissions",
-        areaServed: "IN",
-      },
-    ],
+    telephone: phoneNumbers[0].international,
+    contactPoint: phoneNumbers.map(({ international }) => ({
+      "@type": "ContactPoint",
+      telephone: international,
+      contactType: "admissions",
+      areaServed: "IN",
+    })),
     address: {
       "@type": "PostalAddress",
       streetAddress: "3rd Floor, Balaji Prestige, Opposite Sayali Hotel, Powai Naka",
@@ -167,19 +171,28 @@ export default function Home() {
               players with coaches Aniket Bapat and Apurva Deshmukh at Powai Naka,
               opposite Sayali Hotel in Satara, Maharashtra.
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-stretch">
               <a
                 href="#enquiry"
                 className="inline-flex h-14 items-center justify-center bg-white px-7 text-base font-bold text-black shadow-[8px_8px_0_#525252] transition hover:-translate-y-1"
               >
                 Enquire for admission
               </a>
-              <a
-                href="tel:8390237763"
-                className="inline-flex h-14 items-center justify-center border border-white/40 px-7 text-base font-bold text-white transition hover:bg-white hover:text-black"
-              >
-                Call 8390237763, 7770090266
-              </a>
+              <div className="grid flex-1 grid-cols-2 gap-2 border border-white/20 bg-white/5 p-2">
+                <p className="col-span-2 px-2 text-xs font-bold uppercase tracking-wide text-zinc-300">
+                  Call us
+                </p>
+                {phoneNumbers.map((phoneNumber) => (
+                  <a
+                    key={phoneNumber.international}
+                    href={`tel:${phoneNumber.international}`}
+                    aria-label={`Call ${phoneNumber.display}`}
+                    className="flex min-h-11 items-center justify-center border border-white/20 px-2 text-sm font-bold text-white transition hover:border-amber-300 hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-300"
+                  >
+                    {phoneNumber.display}
+                  </a>
+                ))}
+              </div>
             </div>
             <div className="mt-10 grid gap-3 sm:grid-cols-3">
               {metrics.map((metric) => (
@@ -344,7 +357,7 @@ export default function Home() {
       </section>
 
       <section id="enquiry" className="relative overflow-hidden bg-black px-4 py-24 text-white">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(255,255,255,.18),transparent_24%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(255,255,255,.18),transparent_24%)]" />
         <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[.85fr_1.15fr]">
           <div>
             <p className="text-sm font-bold uppercase text-zinc-400">
@@ -362,77 +375,25 @@ export default function Home() {
               <p className="mt-2 text-zinc-300">
                 3rd Floor, Balaji Prestige, opposite Sayali Hotel, Powai Naka, Satara, Maharashtra 415001.
               </p>
-              <p className="mt-5 font-bold">Contact</p>
-              <a href="tel:8390237763" className="mt-2 block text-zinc-300">
-                8390237763, 7770090266
-              </a>
+              <div className="mt-5">
+                <p className="font-bold">Contact</p>
+                <div className="mt-2 grid gap-2 sm:grid-cols-2">
+                  {phoneNumbers.map((phoneNumber) => (
+                    <a
+                      key={phoneNumber.international}
+                      href={`tel:${phoneNumber.international}`}
+                      aria-label={`Call ${phoneNumber.display}`}
+                      className="border border-white/15 bg-white/5 px-4 py-3 font-semibold text-zinc-200 transition hover:border-amber-300 hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-300"
+                    >
+                      {phoneNumber.display}
+                    </a>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
 
-          <form className="grid gap-4 bg-[#faf8f2] p-6 text-black shadow-[14px_14px_0_rgba(251,191,36,.25)]">
-            <div className="grid gap-4 md:grid-cols-2">
-              <label className="grid gap-2 text-sm font-bold">
-                Parent name
-                <input
-                  name="parent-name"
-                  type="text"
-                  placeholder="Your name"
-                  className="h-12 border border-black/20 px-4 font-normal outline-none focus:border-black"
-                />
-              </label>
-              <label className="grid gap-2 text-sm font-bold">
-                Phone number
-                <input
-                  name="phone"
-                  type="tel"
-                  placeholder="Mobile number"
-                  className="h-12 border border-black/20 px-4 font-normal outline-none focus:border-black"
-                />
-              </label>
-            </div>
-            <div className="grid gap-4 md:grid-cols-2">
-              <label className="grid gap-2 text-sm font-bold">
-                Student name
-                <input
-                  name="student-name"
-                  type="text"
-                  placeholder="Child's name"
-                  className="h-12 border border-black/20 px-4 font-normal outline-none focus:border-black"
-                />
-              </label>
-              <label className="grid gap-2 text-sm font-bold">
-                Chess level
-                <select
-                  name="level"
-                  className="h-12 border border-black/20 px-4 font-normal outline-none focus:border-black"
-                  defaultValue=""
-                >
-                  <option value="" disabled>
-                    Select level
-                  </option>
-                  <option>Beginner</option>
-                  <option>Knows basic moves</option>
-                  <option>Tournament player</option>
-                </select>
-              </label>
-            </div>
-            <label className="grid gap-2 text-sm font-bold">
-              Message
-              <textarea
-                name="message"
-                placeholder="Tell us preferred timing or questions"
-                rows={5}
-                className="border border-black/20 px-4 py-3 font-normal outline-none focus:border-black"
-              />
-            </label>
-            <button
-              type="submit"
-              className="h-13 bg-black px-6 py-4 text-base font-bold text-white transition hover:bg-zinc-800"
-            >
-              Send enquiry
-            </button>
-            
-          </form>
+          <EnquiryForm />
         </div>
       </section>
 
