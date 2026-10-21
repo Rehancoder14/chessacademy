@@ -12,22 +12,48 @@ const phoneNumbers = [
   },
 ];
 
-const programs = [
+const learningLevels = [
   {
-    title: "Chess Coaching",
-    text: "Structured lessons for beginners, school students and improving players with clear milestones.",
+    title: "Discover the Game",
+    stage: "Basic Level 1",
+    promise: "Build a strong foundation.",
+    text: "Learn the board, piece moves and captures, then put the rules into practice. Explore check, checkmate, stalemate, castling, en passant, promotion and basic mates.",
+    skills: "Rules · Piece movement · First checkmates",
   },
   {
-    title: "Club Membership",
-    text: "A focused chess environment where students can learn, revise, solve positions and stay consistent.",
+    title: "Think Tactically",
+    stage: "Basic Level 2",
+    promise: "Spot opportunities to win.",
+    text: "Recognize double attacks, pins, knight forks, skewers and back-rank mates. Learn to turn tactical chances into material and checkmate.",
+    skills: "Forks · Pins · Mating patterns",
   },
   {
-    title: "Game Practice",
-    text: "Regular practice games, analysis sessions and tournament-style thinking habits.",
+    title: "Develop Strategic Thinking",
+    stage: "Pre-Intermediate 1",
+    promise: "Recognize patterns. Exploit weaknesses.",
+    text: "Find weaknesses and combine ideas using deflection, overloaded pieces and multi-move tactics. Study advanced mating patterns, two-bishop mates and variation calculation.",
+    skills: "Combinations · Weaknesses · Calculation",
   },
   {
-    title: "Parent Updates",
-    text: "Simple progress conversations so parents understand what their child is learning.",
+    title: "Master Calculation & Endgames",
+    stage: "Pre-Intermediate 2",
+    promise: "Think several moves ahead.",
+    text: "Calculate longer combinations, study famous tactical games and open lines with purpose. Build confidence in king-and-pawn endgames and understand repetition draws.",
+    skills: "Calculation · Pawn endings · Draws",
+  },
+  {
+    title: "Attack with Confidence",
+    stage: "Intermediate 1",
+    promise: "Create winning opportunities.",
+    text: "Learn to attack the king, remove defenders and pawn cover, and use intermediate moves to seize the initiative. Turn promising positions into real chances.",
+    skills: "King attacks · Removing defenders · Initiative",
+  },
+  {
+    title: "Advance Your Game",
+    stage: "Intermediate 2",
+    promise: "Refine. Compete. Grow.",
+    text: "Explore discovered attacks, queen traps, seventh-rank rooks, back-rank weaknesses and rook-versus-pawn endings. Improve coordination and prepare for competitive play.",
+    skills: "Piece coordination · Rook endings · Competition",
   },
 ];
 
@@ -60,7 +86,7 @@ const faqs = [
   {
     question: "What does the academy provide?",
     answer:
-      "The academy provides chess coaching, club membership, game practice, position solving and guidance from Aniket Bapat and Apurva Deshmukh.",
+      "The academy provides chess coaching, club membership, game practice, position solving and guidance from Aniket Bapat and Apurv Deshmukh.",
   },
 ];
 
@@ -96,7 +122,7 @@ export default function Home() {
     ],
     employee: [
       { "@type": "Person", name: "Aniket Bapat", jobTitle: "Chess Coach" },
-      { "@type": "Person", name: "Apurva Deshmukh", jobTitle: "Chess Coach" },
+      { "@type": "Person", name: "Apurv Deshmukh", jobTitle: "Chess Coach" },
     ],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
@@ -168,7 +194,7 @@ export default function Home() {
             </p>
             <p className="mt-6 max-w-2xl text-xl leading-9 text-zinc-100">
               Premium chess coaching for children, beginners and ambitious
-              players with coaches Aniket Bapat and Apurva Deshmukh at Powai Naka,
+              players with coaches Aniket Bapat and Apurv Deshmukh at Powai Naka,
               opposite Sayali Hotel in Satara, Maharashtra.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-stretch">
@@ -282,11 +308,11 @@ export default function Home() {
               Coaches
             </p>
             <h2 className="mt-4 text-4xl font-black sm:text-5xl">
-              Learn with Aniket Bapat and Apurva Deshmukh.
+              Learn with Aniket Bapat and Apurv Deshmukh.
             </h2>
           </div>
           <div className="mt-10 grid gap-6 md:grid-cols-2">
-            {["Aniket Bapat", "Apurva Deshmukh"].map((coach) => (
+            {["Aniket Bapat", "Apurv Deshmukh"].map((coach) => (
               <article
                 key={coach}
                 className="relative border border-amber-900/10 bg-[#faf8f2] p-5 text-black shadow-[12px_12px_0_rgba(251,191,36,.12)]"
@@ -326,32 +352,64 @@ export default function Home() {
           <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
             <div>
               <p className="text-sm font-bold uppercase text-zinc-500">
-                Academy programs
+              The Kingslayer learning path
               </p>
               <h2 className="mt-4 text-4xl font-black sm:text-5xl">
-                Everything a growing chess player needs.
+                Your journey to chess mastery.
               </h2>
             </div>
             <p className="max-w-xl text-lg leading-8 text-zinc-700">
-              From first moves to stronger tournament habits, every session is
-              designed to help students think with clarity.
+              Six progressive levels take students from their first moves to
+              confident, competitive play—one skill at a time.
             </p>
           </div>
-          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-            {programs.map((program, index) => (
+          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {learningLevels.map((level, index) => (
               <article
-                key={program.title}
-                className="group border border-black/10 bg-white/65 p-6 transition hover:-translate-y-2 hover:bg-black hover:text-white hover:shadow-[12px_12px_0_rgba(251,191,36,.22)]"
+                key={level.title}
+                className="group relative overflow-hidden border border-black/10 bg-white/70 p-6 transition hover:-translate-y-1 hover:bg-black hover:text-white hover:shadow-[10px_10px_0_rgba(251,191,36,.22)]"
               >
-                <p className="text-5xl font-black text-zinc-200 group-hover:text-zinc-700">
+                <div className="flex items-center justify-between gap-3">
+                  <p className="text-xs font-black uppercase tracking-[0.16em] text-zinc-500 group-hover:text-amber-300">
+                    {level.stage}
+                  </p>
+                  <p className="text-4xl font-black text-zinc-200 group-hover:text-zinc-700">
                   0{index + 1}
+                  </p>
+                </div>
+                <h3 className="mt-5 text-2xl font-black">{level.title}</h3>
+                <p className="mt-2 font-bold text-amber-700 group-hover:text-amber-300">
+                  {level.promise}
                 </p>
-                <h3 className="mt-8 text-2xl font-black">{program.title}</h3>
-                <p className="mt-4 leading-7 text-zinc-700 group-hover:text-zinc-300">
-                  {program.text}
+                <p className="mt-4 min-h-28 leading-7 text-zinc-700 group-hover:text-zinc-300">
+                  {level.text}
+                </p>
+                <p className="mt-5 border-t border-black/10 pt-4 text-xs font-bold uppercase tracking-wide text-zinc-500 group-hover:border-white/15 group-hover:text-zinc-300">
+                  {level.skills}
                 </p>
               </article>
             ))}
+          </div>
+          <div className="mt-10 grid gap-6 border border-black/10 bg-black p-6 text-white shadow-[8px_8px_0_rgba(251,191,36,.2)] sm:grid-cols-[1fr_auto] sm:items-center sm:p-8">
+            <div>
+              <p className="text-sm font-bold uppercase tracking-wide text-amber-300">
+                Every move takes you further
+              </p>
+              <h3 className="mt-2 text-2xl font-black sm:text-3xl">
+                Learn. Practise. Analyse. Improve.
+              </h3>
+              <p className="mt-3 max-w-3xl leading-7 text-zinc-300">
+                Progressive training, practical games and assessments help
+                students build skill step by step—from understanding the basics
+                to playing with confidence and strategic awareness.
+              </p>
+            </div>
+            <a
+              href="#enquiry"
+              className="inline-flex min-h-12 items-center justify-center bg-amber-300 px-6 font-black text-black transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-300"
+            >
+              Find your next move <span aria-hidden="true" className="ml-2">→</span>
+            </a>
           </div>
         </div>
       </section>
