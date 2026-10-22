@@ -72,6 +72,23 @@ const metrics = [
   { value: "64", label: "Squares of sharp focus" },
 ];
 
+const timetableDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+const timetableSlots = [
+  { time: "5:00–6:00 PM", classes: ["Beginner", "Beginner Advanced", "Beginner", "Beginner Advanced", "Beginner", "Beginner Advanced"] },
+  { time: "6:00–7:00 PM", classes: ["Intermediate", "Intermediate Advanced", "Intermediate", "Intermediate Advanced", "Intermediate", "Intermediate Advanced"] },
+  { time: "7:00–8:00 PM", classes: ["Advanced", "Personal Class", "Advanced", "Personal Class", "Advanced", "Personal Class"] },
+];
+
+const weeklyBatches = [
+  { name: "Beginner", days: "Monday, Wednesday, Friday", marker: "bg-amber-300" },
+  { name: "Beginner Advanced", days: "Tuesday, Thursday, Saturday", marker: "bg-white" },
+  { name: "Intermediate", days: "Monday, Wednesday, Friday", marker: "bg-amber-300" },
+  { name: "Intermediate Advanced", days: "Tuesday, Thursday, Saturday", marker: "bg-white" },
+  { name: "Advanced", days: "Monday, Wednesday, Friday", marker: "bg-amber-300" },
+  { name: "Personal Classes", days: "Tuesday, Thursday, Saturday · 7:00–8:00 PM", marker: "bg-white" },
+];
+
 const faqs = [
   {
     question: "Who can join Kingslayer Chess Academy?",
@@ -154,7 +171,7 @@ export default function Home() {
             sizes="100vw"
           />
           <div className="absolute inset-0 bg-[linear-gradient(90deg,#000_0%,rgba(0,0,0,.92)_38%,rgba(0,0,0,.42)_100%)]" />
-          <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-black to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-48 bg-linear-to-t from-black to-transparent" />
         </div>
 
         <div className="absolute left-0 right-0 top-24 -z-10 h-px bg-white/20" />
@@ -213,7 +230,7 @@ export default function Home() {
                     key={phoneNumber.international}
                     href={`tel:${phoneNumber.international}`}
                     aria-label={`Call ${phoneNumber.display}`}
-                    className="flex min-h-11 items-center justify-center border border-white/20 px-2 text-sm font-bold text-white transition hover:border-amber-300 hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-300"
+                    className="flex min-h-11 items-center justify-center border border-white/20 px-2 text-sm font-bold text-white transition hover:border-amber-300 hover:bg-white hover:text-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-300"
                   >
                     {phoneNumber.display}
                   </a>
@@ -245,9 +262,9 @@ export default function Home() {
       >
         <div className="absolute inset-x-0 top-0 h-px bg-black/10" />
         <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[.9fr_1.1fr]">
-          <div className="relative min-h-[460px] overflow-hidden bg-black p-6 text-white shadow-[18px_18px_0_#e4e4e7]">
-            <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,.12)_0_25%,transparent_25%_50%,rgba(255,255,255,.12)_50%_75%,transparent_75%)] bg-[length:92px_92px] opacity-35" />
-            <div className="relative flex h-full min-h-[410px] flex-col justify-between border border-white/20 p-6">
+          <div className="relative min-h-115 overflow-hidden bg-black p-6 text-white shadow-[18px_18px_0_#e4e4e7]">
+            <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,.12)_0_25%,transparent_25%_50%,rgba(255,255,255,.12)_50%_75%,transparent_75%)] bg-size-[92px_92px] opacity-35" />
+            <div className="relative flex h-full min-h-102.5 flex-col justify-between border border-white/20 p-6">
               <p className="text-sm font-bold uppercase text-zinc-300">
                 Training board
               </p>
@@ -301,7 +318,7 @@ export default function Home() {
       </section>
 
       <section id="coaches" className="relative overflow-hidden bg-zinc-950 px-4 py-24 text-white">
-        <div className="absolute inset-y-0 right-0 w-1/2 bg-[linear-gradient(45deg,rgba(255,255,255,.07)_25%,transparent_25%,transparent_50%,rgba(255,255,255,.07)_50%,rgba(255,255,255,.07)_75%,transparent_75%)] bg-[length:72px_72px] opacity-30" />
+        <div className="absolute inset-y-0 right-0 w-1/2 bg-[linear-gradient(45deg,rgba(255,255,255,.07)_25%,transparent_25%,transparent_50%,rgba(255,255,255,.07)_50%,rgba(255,255,255,.07)_75%,transparent_75%)] bg-size-[72px_72px] opacity-30" />
         <div className="mx-auto max-w-6xl">
           <div className="max-w-3xl">
             <p className="text-sm font-bold uppercase text-zinc-400">
@@ -406,10 +423,77 @@ export default function Home() {
             </div>
             <a
               href="#enquiry"
-              className="inline-flex min-h-12 items-center justify-center bg-amber-300 px-6 font-black text-black transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-300"
+              className="inline-flex min-h-12 items-center justify-center bg-amber-300 px-6 font-black text-black transition hover:bg-white focus-visible:outline focus-visible:outline-offset-4 focus-visible:outline-amber-300"
             >
               Find your next move <span aria-hidden="true" className="ml-2">→</span>
             </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="schedule" className="relative overflow-hidden bg-zinc-950 px-4 py-24 text-white">
+        <div className="pointer-events-none absolute -right-28 -top-28 h-96 w-96 rounded-full bg-amber-300/10 blur-3xl" />
+        <div className="relative mx-auto max-w-6xl">
+          <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+            <div>
+              <p className="text-sm font-bold uppercase tracking-[0.2em] text-amber-300">Make your next move</p>
+              <h2 className="mt-4 text-4xl font-black sm:text-5xl">Weekly class timetable</h2>
+              <p className="mt-4 max-w-2xl text-lg leading-8 text-zinc-300">
+                Monday to Saturday, from 5:00 PM onwards. Every session is one hour.
+              </p>
+            </div>
+            <a href="#enquiry" className="inline-flex min-h-12 shrink-0 items-center justify-center border border-amber-300 bg-amber-300 px-6 font-black text-black transition hover:-translate-y-0.5 hover:bg-white focus-visible:outline focus-visible:outline-offset-4 focus-visible:outline-amber-300">
+              Find your batch <span aria-hidden="true" className="ml-2">→</span>
+            </a>
+          </div>
+
+          <div className="mt-10 overflow-hidden border border-white/15 bg-black/40 shadow-[12px_12px_0_rgba(251,191,36,.12)]">
+            <div className="flex items-center justify-between border-b border-white/10 px-5 py-4 sm:px-6">
+              <p className="font-bold">Class schedule</p>
+              <p className="text-xs font-bold uppercase tracking-wider text-zinc-400">Satara · Weekly</p>
+            </div>
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-212.5 border-collapse text-left">
+                <caption className="sr-only">Kingslayer Chess Academy weekly class timetable, Monday to Saturday</caption>
+                <thead>
+                  <tr className="bg-white/6 text-xs font-black uppercase tracking-wider text-amber-200">
+                    <th scope="col" className="w-36 px-5 py-4">Time</th>
+                    {timetableDays.map((day) => <th scope="col" key={day} className="px-4 py-4">{day}</th>)}
+                  </tr>
+                </thead>
+                <tbody>
+                  {timetableSlots.map((slot) => (
+                    <tr key={slot.time} className="border-t border-white/10 transition-colors hover:bg-white/4">
+                      <th scope="row" className="whitespace-nowrap px-5 py-5 text-sm font-black text-white">{slot.time}</th>
+                      {slot.classes.map((className, index) => (
+                        <td key={`${slot.time}-${timetableDays[index]}`} className="px-4 py-5">
+                          <span className={`inline-flex min-h-9 items-center border px-3 py-2 text-sm font-semibold ${className === "Personal Class" ? "border-white/25 bg-white/10 text-white" : className.includes("Advanced") ? "border-amber-300/30 bg-amber-300/10 text-amber-100" : "border-white/10 bg-white/4 text-zinc-200"}`}>
+                            {className}
+                          </span>
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="border-t border-white/10 px-5 py-3 text-xs text-zinc-400 sm:px-6">Swipe or scroll sideways to see every day.</p>
+          </div>
+
+          <div className="mt-10 grid gap-8 lg:grid-cols-[.65fr_1.35fr] lg:items-start">
+            <div>
+              <p className="text-sm font-bold uppercase tracking-[0.16em] text-zinc-400">At a glance</p>
+              <h3 className="mt-3 text-2xl font-black">Your weekly batch days</h3>
+              <p className="mt-3 leading-7 text-zinc-300">Choose a level and build a regular rhythm of practice throughout the week.</p>
+            </div>
+            <ul className="grid gap-3 sm:grid-cols-2">
+              {weeklyBatches.map((batch) => (
+                <li key={batch.name} className="flex min-h-20 items-start gap-3 border border-white/10 bg-white/4 p-4">
+                  <span aria-hidden="true" className={`mt-1.5 h-2.5 w-2.5 shrink-0 ${batch.marker}`} />
+                  <span><span className="block font-bold text-white">{batch.name}</span><span className="mt-1 block text-sm leading-6 text-zinc-400">{batch.days}</span></span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
@@ -441,7 +525,7 @@ export default function Home() {
                       key={phoneNumber.international}
                       href={`tel:${phoneNumber.international}`}
                       aria-label={`Call ${phoneNumber.display}`}
-                      className="border border-white/15 bg-white/5 px-4 py-3 font-semibold text-zinc-200 transition hover:border-amber-300 hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-300"
+                      className="border border-white/15 bg-white/5 px-4 py-3 font-semibold text-zinc-200 transition hover:border-amber-300 hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-amber-300"
                     >
                       {phoneNumber.display}
                     </a>
@@ -479,10 +563,10 @@ export default function Home() {
 
 function ChessBoardStage() {
   return (
-    <div className="stage-card relative min-h-[460px] overflow-hidden border border-white/15 bg-white/10 p-5 backdrop-blur">
+    <div className="stage-card relative min-h-115 overflow-hidden border border-white/15 bg-white/10 p-5 backdrop-blur">
       <div className="absolute inset-x-6 top-8 h-px bg-amber-300/40" />
       <div className="absolute inset-x-12 bottom-12 h-px bg-white/15" />
-      <div className="relative h-[430px]">
+      <div className="relative h-107.5">
         <div className="absolute left-1/2 top-8 z-10 -translate-x-1/2">
           <span className="brand-mark brand-mark-stage">
             <Image

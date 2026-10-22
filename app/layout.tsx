@@ -28,6 +28,11 @@ export const metadata: Metadata = {
     "chess membership",
     "chess game practice",
     "satara chess academy",
+    "chess association",
+    "rapid chess association",
+    "satara district chess association",
+    "apurv deshmukh",
+    "aniket bapat",
   ],
   alternates: {
     canonical: "/",
@@ -94,6 +99,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                   </Link>
                 </li>
                 <li>
+                  <Link href="/#schedule" className="hover:underline">
+                    Schedule
+                  </Link>
+                </li>
+                <li>
                   <Link href="/#enquiry" className="hover:underline">
                     Enquiry
                   </Link>
@@ -103,7 +113,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                     href="https://g.page/r/CawgIQna4bSyEAE/review"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 border border-amber-300/70 bg-amber-300 px-4 py-2 font-black text-black shadow-[3px_3px_0_rgba(255,255,255,.16)] transition hover:-translate-y-0.5 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-300"
+                    className="inline-flex items-center gap-2 border border-amber-300/70 bg-amber-300 px-4 py-2 font-black text-black shadow-[3px_3px_0_rgba(255,255,255,.16)] transition hover:-translate-y-0.5 hover:bg-white focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-amber-300"
                   >
                     <span aria-hidden="true" className="text-lg leading-none text-amber-700">★</span>
                     Leave a Google review
