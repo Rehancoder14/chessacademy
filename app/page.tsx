@@ -72,21 +72,21 @@ const metrics = [
   { value: "64", label: "Squares of sharp focus" },
 ];
 
-const timetableDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const timetableDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
 const timetableSlots = [
-  { time: "5:00–6:00 PM", classes: ["Beginner", "Beginner Advanced", "Beginner", "Beginner Advanced", "Beginner", "Beginner Advanced"] },
-  { time: "6:00–7:00 PM", classes: ["Intermediate", "Intermediate Advanced", "Intermediate", "Intermediate Advanced", "Intermediate", "Intermediate Advanced"] },
-  { time: "7:00–8:00 PM", classes: ["Advanced", "Personal Class", "Advanced", "Personal Class", "Advanced", "Personal Class"] },
+  { time: "5:00–6:00 PM", classes: ["Beginner", "Beginner Advanced", "Beginner", "Beginner Advanced", "Beginner", "Beginner Advanced", "Beginner Advanced"] },
+  { time: "6:00–7:00 PM", classes: ["Intermediate", "Intermediate Advanced", "Intermediate", "Intermediate Advanced", "Intermediate", "Intermediate Advanced", "Intermediate Advanced"] },
+  { time: "7:00–8:00 PM", classes: ["Advanced", "Personal Class", "Advanced", "Personal Class", "Advanced", "Personal Class", "Personal Class"] },
 ];
 
 const weeklyBatches = [
   { name: "Beginner", days: "Monday, Wednesday, Friday", marker: "bg-amber-300" },
-  { name: "Beginner Advanced", days: "Tuesday, Thursday, Saturday", marker: "bg-white" },
+  { name: "Beginner Advanced", days: "Tuesday, Thursday, Saturday, Sunday", marker: "bg-white" },
   { name: "Intermediate", days: "Monday, Wednesday, Friday", marker: "bg-amber-300" },
-  { name: "Intermediate Advanced", days: "Tuesday, Thursday, Saturday", marker: "bg-white" },
+  { name: "Intermediate Advanced", days: "Tuesday, Thursday, Saturday, Sunday", marker: "bg-white" },
   { name: "Advanced", days: "Monday, Wednesday, Friday", marker: "bg-amber-300" },
-  { name: "Personal Classes", days: "Tuesday, Thursday, Saturday · 7:00–8:00 PM", marker: "bg-white" },
+  { name: "Personal Classes", days: "Tuesday, Thursday, Saturday, Sunday · 7:00–8:00 PM", marker: "bg-white" },
 ];
 
 const faqs = [
@@ -439,7 +439,7 @@ export default function Home() {
               <p className="text-sm font-bold uppercase tracking-[0.2em] text-amber-300">Make your next move</p>
               <h2 className="mt-4 text-4xl font-black sm:text-5xl">Weekly class timetable</h2>
               <p className="mt-4 max-w-2xl text-lg leading-8 text-zinc-300">
-                Monday to Saturday, from 5:00 PM onwards. Every session is one hour.
+                Monday to Sunday, from 5:00 PM onwards. Every session is one hour.
               </p>
             </div>
             <a href="#enquiry" className="inline-flex min-h-12 shrink-0 items-center justify-center border border-amber-300 bg-amber-300 px-6 font-black text-black transition hover:-translate-y-0.5 hover:bg-white focus-visible:outline focus-visible:outline-offset-4 focus-visible:outline-amber-300">
@@ -453,8 +453,8 @@ export default function Home() {
               <p className="text-xs font-bold uppercase tracking-wider text-zinc-400">Satara · Weekly</p>
             </div>
             <div className="overflow-x-auto">
-              <table className="w-full min-w-212.5 border-collapse text-left">
-                <caption className="sr-only">Kingslayer Chess Academy weekly class timetable, Monday to Saturday</caption>
+              <table className="w-full min-w-240 border-collapse text-left">
+                <caption className="sr-only">Kingslayer Chess Academy weekly class timetable, Monday to Sunday</caption>
                 <thead>
                   <tr className="bg-white/6 text-xs font-black uppercase tracking-wider text-amber-200">
                     <th scope="col" className="w-36 px-5 py-4">Time</th>
