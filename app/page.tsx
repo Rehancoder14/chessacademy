@@ -76,8 +76,8 @@ const timetableDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "
 
 const timetableSlots = [
   { time: "5:00–6:00 PM", classes: ["Beginner", "Beginner Advanced", "Beginner", "Beginner Advanced", "Beginner", "Beginner Advanced"] },
-  { time: "6:00–7:00 PM", classes: ["Intermediate", "Intermediate Advanced", "Intermediate", "Intermediate Advanced", "Intermediate", "Intermediate Advanced"] },
-  { time: "7:00–8:00 PM", classes: ["Advanced", "Personal Class", "Advanced", "Personal Class", "Advanced", "Personal Class"] },
+  { time: "6:15–7:15 PM", classes: ["Intermediate", "Intermediate Advanced", "Intermediate", "Intermediate Advanced", "Intermediate", "Intermediate Advanced"] },
+  { time: "7:30–8:30 PM", classes: ["Advanced", "Personal Class", "Advanced", "Personal Class", "Advanced", "Personal Class"] },
 ];
 
 const weeklyBatches = [
@@ -86,7 +86,7 @@ const weeklyBatches = [
   { name: "Intermediate", days: "Monday, Wednesday, Friday", marker: "bg-amber-300" },
   { name: "Intermediate Advanced", days: "Tuesday, Thursday, Saturday", marker: "bg-white" },
   { name: "Advanced", days: "Monday, Wednesday, Friday", marker: "bg-amber-300" },
-  { name: "Personal Classes", days: "Tuesday, Thursday, Saturday · 7:00–8:00 PM", marker: "bg-white" },
+  { name: "Personal Classes", days: "Tuesday, Thursday, Saturday · 7:30–8:30 PM", marker: "bg-white" },
   { name: "Playing Session / Tournament", days: "Sunday", marker: "bg-amber-300" },
 ];
 
