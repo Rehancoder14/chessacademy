@@ -75,18 +75,19 @@ const metrics = [
 const timetableDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
 const timetableSlots = [
-  { time: "5:00–6:00 PM", classes: ["Beginner", "Beginner Advanced", "Beginner", "Beginner Advanced", "Beginner", "Beginner Advanced", "Beginner Advanced"] },
-  { time: "6:00–7:00 PM", classes: ["Intermediate", "Intermediate Advanced", "Intermediate", "Intermediate Advanced", "Intermediate", "Intermediate Advanced", "Intermediate Advanced"] },
-  { time: "7:00–8:00 PM", classes: ["Advanced", "Personal Class", "Advanced", "Personal Class", "Advanced", "Personal Class", "Personal Class"] },
+  { time: "5:00–6:00 PM", classes: ["Beginner", "Beginner Advanced", "Beginner", "Beginner Advanced", "Beginner", "Beginner Advanced"] },
+  { time: "6:00–7:00 PM", classes: ["Intermediate", "Intermediate Advanced", "Intermediate", "Intermediate Advanced", "Intermediate", "Intermediate Advanced"] },
+  { time: "7:00–8:00 PM", classes: ["Advanced", "Personal Class", "Advanced", "Personal Class", "Advanced", "Personal Class"] },
 ];
 
 const weeklyBatches = [
   { name: "Beginner", days: "Monday, Wednesday, Friday", marker: "bg-amber-300" },
-  { name: "Beginner Advanced", days: "Tuesday, Thursday, Saturday, Sunday", marker: "bg-white" },
+  { name: "Beginner Advanced", days: "Tuesday, Thursday, Saturday", marker: "bg-white" },
   { name: "Intermediate", days: "Monday, Wednesday, Friday", marker: "bg-amber-300" },
-  { name: "Intermediate Advanced", days: "Tuesday, Thursday, Saturday, Sunday", marker: "bg-white" },
+  { name: "Intermediate Advanced", days: "Tuesday, Thursday, Saturday", marker: "bg-white" },
   { name: "Advanced", days: "Monday, Wednesday, Friday", marker: "bg-amber-300" },
-  { name: "Personal Classes", days: "Tuesday, Thursday, Saturday, Sunday · 7:00–8:00 PM", marker: "bg-white" },
+  { name: "Personal Classes", days: "Tuesday, Thursday, Saturday · 7:00–8:00 PM", marker: "bg-white" },
+  { name: "Playing Session / Tournament", days: "Sunday", marker: "bg-amber-300" },
 ];
 
 const faqs = [
@@ -437,9 +438,9 @@ export default function Home() {
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div>
               <p className="text-sm font-bold uppercase tracking-[0.2em] text-amber-300">Make your next move</p>
-              <h2 className="mt-4 text-4xl font-black sm:text-5xl">Weekly class timetable</h2>
+              <h2 className="mt-4 text-4xl font-black sm:text-5xl">Weekly class &amp; playing schedule</h2>
               <p className="mt-4 max-w-2xl text-lg leading-8 text-zinc-300">
-                Monday to Sunday, from 5:00 PM onwards. Every session is one hour.
+                Classes run Monday to Saturday. Sundays are for playing sessions and tournaments from 5:00–8:00 PM.
               </p>
             </div>
             <a href="#enquiry" className="inline-flex min-h-12 shrink-0 items-center justify-center border border-amber-300 bg-amber-300 px-6 font-black text-black transition hover:-translate-y-0.5 hover:bg-white focus-visible:outline focus-visible:outline-offset-4 focus-visible:outline-amber-300">
@@ -449,12 +450,12 @@ export default function Home() {
 
           <div className="mt-10 overflow-hidden border border-white/15 bg-black/40 shadow-[12px_12px_0_rgba(251,191,36,.12)]">
             <div className="flex items-center justify-between border-b border-white/10 px-5 py-4 sm:px-6">
-              <p className="font-bold">Class schedule</p>
+              <p className="font-bold">Weekly schedule</p>
               <p className="text-xs font-bold uppercase tracking-wider text-zinc-400">Satara · Weekly</p>
             </div>
             <div className="overflow-x-auto">
               <table className="w-full min-w-240 border-collapse text-left">
-                <caption className="sr-only">Kingslayer Chess Academy weekly class timetable, Monday to Sunday</caption>
+                <caption className="sr-only">Kingslayer Chess Academy class timetable Monday to Saturday and Sunday playing session or tournament</caption>
                 <thead>
                   <tr className="bg-white/6 text-xs font-black uppercase tracking-wider text-amber-200">
                     <th scope="col" className="w-36 px-5 py-4">Time</th>
@@ -462,7 +463,7 @@ export default function Home() {
                   </tr>
                 </thead>
                 <tbody>
-                  {timetableSlots.map((slot) => (
+                  {timetableSlots.map((slot, slotIndex) => (
                     <tr key={slot.time} className="border-t border-white/10 transition-colors hover:bg-white/4">
                       <th scope="row" className="whitespace-nowrap px-5 py-5 text-sm font-black text-white">{slot.time}</th>
                       {slot.classes.map((className, index) => (
@@ -472,6 +473,14 @@ export default function Home() {
                           </span>
                         </td>
                       ))}
+                      {slotIndex === 0 && (
+                        <td rowSpan={timetableSlots.length} className="px-4 py-5 align-middle">
+                          <span className="inline-flex min-h-20 flex-col justify-center gap-2 border border-amber-300/30 bg-amber-300/10 px-3 py-3 text-sm font-semibold text-amber-100">
+                            <span>Playing Session / Tournament</span>
+                           
+                          </span>
+                        </td>
+                      )}
                     </tr>
                   ))}
                 </tbody>
@@ -483,8 +492,8 @@ export default function Home() {
           <div className="mt-10 grid gap-8 lg:grid-cols-[.65fr_1.35fr] lg:items-start">
             <div>
               <p className="text-sm font-bold uppercase tracking-[0.16em] text-zinc-400">At a glance</p>
-              <h3 className="mt-3 text-2xl font-black">Your weekly batch days</h3>
-              <p className="mt-3 leading-7 text-zinc-300">Choose a level and build a regular rhythm of practice throughout the week.</p>
+              <h3 className="mt-3 text-2xl font-black">Weekly classes &amp; activities</h3>
+              <p className="mt-3 leading-7 text-zinc-300">Choose a class level for the week, then join Sunday play or tournament sessions.</p>
             </div>
             <ul className="grid gap-3 sm:grid-cols-2">
               {weeklyBatches.map((batch) => (
