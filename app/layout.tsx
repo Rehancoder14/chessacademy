@@ -104,6 +104,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                   </Link>
                 </li>
                 <li>
+                  <Link href="/tournaments" className="hover:underline">
+                    Tournaments
+                  </Link>
+                </li>
+                <li>
                   <Link href="/#enquiry" className="hover:underline">
                     Enquiry
                   </Link>
