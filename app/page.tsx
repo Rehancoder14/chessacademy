@@ -330,26 +330,40 @@ export default function Home() {
             </h2>
           </div>
           <div className="mt-10 grid gap-6 md:grid-cols-2">
-            {["Aniket Bapat", "Apurv Deshmukh"].map((coach) => (
+            {[
+              {
+                name: "Aniket Bapat",
+                specialty: "Tournament Preparation & Attacking Chess",
+                description:
+                  "Specialises in tournament-level opening preparation, attacking techniques and deep calculations. His coaching focuses on building strong opening repertoires, identifying attacking opportunities and combining accurate calculation with instinctive decision-making in practical games.",
+              },
+              {
+                name: "Apurv Deshmukh",
+                specialty: "Positional Chess & Endgame Technique",
+                description:
+                  "Specialises in positional understanding, endgame mastery and core chess fundamentals. His coaching focuses on evaluating imbalances, understanding pawn structures, improving piece coordination and developing the strategic clarity needed to make consistent decisions over the board.",
+              },
+            ].map((coach) => (
               <article
-                key={coach}
+                key={coach.name}
                 className="relative border border-amber-900/10 bg-[#faf8f2] p-5 text-black shadow-[12px_12px_0_rgba(251,191,36,.12)]"
               >
                 <div className="grid gap-5 sm:grid-cols-[180px_1fr]">
                   <div className="flex aspect-square items-center justify-center border border-dashed border-black/35 bg-[conic-gradient(from_45deg,#18181b_0_25%,#e9e4d8_0_50%,#18181b_0_75%,#e9e4d8_0)] p-4 text-center">
                     <span className="border border-amber-400/60 bg-black/90 px-5 py-4 text-3xl font-black tracking-[0.2em] text-amber-300 shadow-xl">
-                      {coach
+                      {coach.name
                         .split(" ")
                         .map((name) => name[0])
                         .join("")}
                     </span>
                   </div>
                   <div>
-                    <h3 className="text-2xl font-black">{coach}</h3>
+                    <h3 className="text-2xl font-black">{coach.name}</h3>
+                    <p className="mt-2 font-semibold italic text-zinc-600">
+                      {coach.specialty}
+                    </p>
                     <p className="mt-3 leading-7 text-zinc-700">
-                      Chess coach focused on clear concepts, disciplined
-                      practice and practical game improvement for academy
-                      students.
+                      {coach.description}
                     </p>
                     <p className="mt-5 inline-flex bg-black px-4 py-2 text-sm font-bold text-white">
                       Chess Coach
